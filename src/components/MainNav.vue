@@ -4,7 +4,7 @@
       <div
         class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8"
       >
-        <a href="/" class="flex h-full items-center text-xl">DevCareers</a>
+        <a href="/" class="flex h-full items-center text-xl">{{ company }}</a>
       </div>
     </div>
   </header>
@@ -13,5 +13,10 @@
 <script>
 export default {
   name: "MainNav",
+  data() {
+    return {
+      company: "DevCareers",
+    };
+  },
 };
 </script>
