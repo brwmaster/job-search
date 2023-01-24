@@ -1,6 +1,6 @@
 <template>
   <img
-    class="h-8 w-8 rounded-3xl object-contain"
+    class="h-8 w-8 cursor-pointer rounded-3xl object-contain"
     :src="imageLink"
     alt="Profile image"
   />
