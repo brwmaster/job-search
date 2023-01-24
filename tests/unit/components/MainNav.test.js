@@ -39,7 +39,7 @@ describe("MainNav", () => {
 
       await userEvent.click(loginButton);
 
-      profileImage = screen.queryByRole("img", {
+      profileImage = screen.getByRole("img", {
         name: /profile image/i,
       });
 
