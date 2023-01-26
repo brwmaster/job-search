@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import MainNav from "@/components/MainNav.vue";
 
 describe("MainNav", () => {
-  it("displays the company name", () => {
+  const renderMainNav = () => {
     render(MainNav, {
       global: {
         stubs: {
@@ -11,12 +11,16 @@ describe("MainNav", () => {
         },
       },
     });
+  };
+
+  it("displays the company name", () => {
+    renderMainNav();
     const companyName = screen.getByText("DevCareers");
     expect(companyName).toBeInTheDocument();
   });
 
   it("displays menu items for navigation", () => {
-    render(MainNav);
+    renderMainNav();
     const menuItems = screen.getAllByRole("listitem");
     const menuItemsText = menuItems.map((item) => item.textContent);
     expect(menuItemsText).toEqual([
@@ -31,14 +35,7 @@ describe("MainNav", () => {
 
   describe("when the user logs in", () => {
     it("display user profile image", async () => {
-      render(MainNav, {
-        global: {
-          stubs: {
-            FontAwesomeIcon: true,
-          },
-        },
-      });
-
+      renderMainNav();
       let profileImage = screen.queryByRole("img", {
         name: /profile image/i,
       });
