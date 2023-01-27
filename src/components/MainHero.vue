@@ -1,5 +1,7 @@
 <template>
-  <h2>Hero</h2>
+  <main>
+    <section>Hero</section>
+  </main>
 </template>
 
 <script>
