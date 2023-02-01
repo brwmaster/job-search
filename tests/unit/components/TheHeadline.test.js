@@ -4,8 +4,16 @@ import TheHeadline from "@/components/TheHeadline.vue";
 import { vi } from "vitest";
 
 describe("TheHeadline", () => {
-  it("displays introductory verb", () => {
+  beforeEach(() => {
     vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.unstubAllGlobals();
+  });
+
+  it("displays introductory verb", () => {
     render(TheHeadline);
 
     const verb = screen.getByRole("heading", {
@@ -13,23 +21,18 @@ describe("TheHeadline", () => {
     });
 
     expect(verb).toBeInTheDocument();
-    vi.useRealTimers();
   });
 
   it("changes verb at a consistent inerval", () => {
-    vi.useFakeTimers();
     const mock = vi.fn();
     vi.stubGlobal("setInterval", mock); // same as vi.useFakeTimers. But now we can access it
 
     render(TheHeadline);
 
     expect(mock).toHaveBeenCalled();
-    vi.useRealTimers();
   });
 
   it("swaps verb after interval", async () => {
-    vi.useFakeTimers();
-
     render(TheHeadline);
 
     vi.advanceTimersToNextTimer();
@@ -49,6 +52,5 @@ describe("TheHeadline", () => {
     const { unmount } = render(TheHeadline);
     unmount();
     expect(clearInterval).toHaveBeenCalled();
-    vi.unstubAllGlobals();
   });
 });
