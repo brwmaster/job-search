@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import nextElementInList from "@/utils/nextElementInList";
+
 export default {
   name: "TheHeadline",
   data() {
@@ -35,9 +37,7 @@ export default {
     updateTitle() {
       this.interval = setInterval(() => {
         const verbs = ["Build", "Create", "Design", "Code"];
-        const currentVerbIndex = verbs.indexOf(this.verb);
-        const nextVerbIndex = (currentVerbIndex + 1) % 4;
-        const nextVerb = verbs[nextVerbIndex];
+        const nextVerb = nextElementInList(verbs, this.verb);
         this.verb = nextVerb;
       }, 3000);
     },
