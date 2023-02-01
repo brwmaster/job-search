@@ -21,10 +21,7 @@ export default {
   computed: {
     verbClasses() {
       return {
-        build: this.verb === "Build",
-        create: this.verb === "Create",
-        design: this.verb === "Design",
-        code: this.verb === "Code",
+        [this.verb.toLowerCase()]: true,
       };
     },
   },
