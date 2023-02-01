@@ -5,8 +5,10 @@
     <font-awesome-icon icon="fa-solid fa-search" class="ml-4 mr-3" />
     <div class="flex h-full flex-1 flex-nowrap text-base font-light">
       <div class="relative flex h-full flex-1 items-center pr-3">
-        <label class="absolute left-0 -top-10">Role</label>
+        <label for="role" class="absolute left-0 -top-10">Role</label>
         <input
+          id="role"
+          v-model="role"
           type="text"
           placeholder="Software engineer"
           class="w-full text-lg font-normal focus:outline-none"
@@ -18,8 +20,10 @@
         in
       </span>
       <div class="relative flex h-full flex-1 items-center pl-3">
-        <label class="absolute left-3 -top-10">Where?</label>
+        <label for="location" class="absolute left-3 -top-10">Where?</label>
         <input
+          id="location"
+          v-model="location"
           type="text"
           placeholder="Amsterdam"
           class="w-full text-lg font-normal focus:outline-none"
@@ -36,6 +40,12 @@ export default {
   name: "JobSearchForm",
   components: {
     ActionButton,
+  },
+  data() {
+    return {
+      role: "",
+      location: "",
+    };
   },
 };
 </script>
