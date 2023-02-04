@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: "JobResulstView",
+  name: "JobResultsView",
 };
 </script>
