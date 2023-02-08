@@ -3,38 +3,38 @@ import { RouterLinkStub } from "@vue/test-utils";
 import JobListing from "@/components/JobResults/JobListing.vue";
 
 describe("JobListing", () => {
-  it("renders job title", () => {
+  const createJobProps = (jobProps = {}) => ({
+    title: "Vue Developer",
+    organization: "Vue Lovers",
+    ...jobProps,
+  });
+
+  const renderJobListing = (jobProps) => {
     render(JobListing, {
       global: {
         stubs: {
-          RouterLink: RouterLinkStub,
+          "router-link": RouterLinkStub,
         },
       },
       props: {
         job: {
-          title: "Vue Developer",
+          ...jobProps,
         },
       },
     });
+  };
 
-    const jobTitle = screen.getByText("Vue Developer");
+  it("renders job title", () => {
+    const jobProps = createJobProps({ title: "React Developer" });
+    renderJobListing(jobProps);
+
+    const jobTitle = screen.getByText("React Developer");
     expect(jobTitle).toBeInTheDocument();
   });
 
   it("renders job organization", () => {
-    render(JobListing, {
-      global: {
-        stubs: {
-          RouterLink: RouterLinkStub,
-        },
-      },
-      props: {
-        job: {
-          title: "Vue Developer",
-          organization: "Vue Lovers",
-        },
-      },
-    });
+    const jobProps = createJobProps();
+    renderJobListing(jobProps);
 
     const jobOrganization = screen.getByText("Vue Lovers");
     expect(jobOrganization).toBeInTheDocument();
