@@ -15,10 +15,10 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   name: "SubNav",
   components: { FontAwesomeIcon },
-  data() {
-    return {
-      onJobsResultPage: true,
-    };
+  computed: {
+    onJobsResultPage() {
+      return this.$route.name === "JobResults";
+    },
   },
 };
 </script>
