@@ -18,6 +18,31 @@
               </div>
             </div>
           </div>
+          <div class="px-8 py-4">
+            <div>
+              <h3 class="mt-1 mb-2">Qualifications</h3>
+              <div>
+                <ul class="list-disc pl-8">
+                  <li>Bachelor's degree or equivalent practical experience.</li>
+                  <li>
+                    10 years of experience in product management, consulting, as
+                    a co-founder or a related technical role.
+                  </li>
+                  <li>
+                    building and shipping technical products. 2 years of
+                    experience in people leadership.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-4 text-center">
+              <router-link
+                to="/jobs/results/1"
+                class="p-1 text-brand-blue-1 hover:shadow-blue"
+                >Expand</router-link
+              >
+            </div>
+          </div>
         </router-link>
       </li>
     </ol>
