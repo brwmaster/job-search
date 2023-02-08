@@ -37,7 +37,7 @@ describe("JobSearchForm", () => {
 
       await userEvent.click(submitButton);
 
-      expect($router.push).toHaveBeenCalledWith({
+      expect(push).toHaveBeenCalledWith({
         name: "JobResults",
         query: {
           role: "Vue Developer",
