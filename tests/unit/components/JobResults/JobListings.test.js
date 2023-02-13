@@ -10,7 +10,15 @@ describe("JobListings", () => {
   it("fetches jobs", () => {
     // overwrite axios.get and return a promise with the data property
     axios.get.mockResolvedValue({ data: [] });
-    render(JobListings);
+    const $route = { query: { page: "1" } };
+
+    render(JobListings, {
+      global: {
+        mocks: {
+          $route,
+        },
+      },
+    });
 
     expect(axios.get).toHaveBeenCalledWith("http://localhost:3000/jobs");
   });
@@ -19,8 +27,13 @@ describe("JobListings", () => {
     axios.get.mockResolvedValue({
       data: Array(15).fill({ id: "1", title: "Vue Developer" }),
     });
+    const $route = { query: { page: "1" } };
+
     render(JobListings, {
       global: {
+        mocks: {
+          $route,
+        },
         stubs: {
           "router-link": RouterLinkStub,
         },
