@@ -22,7 +22,11 @@ export default {
   },
   computed: {
     pagedJobs() {
-      return this.jobs.slice(0, 10);
+      const page = Number.parseInt(this.$route.query.page) || 1;
+      const offset = (page - 1) * 10;
+      const total = page * 10;
+
+      return this.jobs.slice(offset, total);
     },
   },
   async mounted() {
