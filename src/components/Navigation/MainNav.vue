@@ -32,7 +32,7 @@
             v-else
             text="Sign in"
             type="primary"
-            @click="loginUser"
+            @click="LOGIN_USER"
           />
         </div>
       </div>
@@ -96,7 +96,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(useUserStore, ["loginUser"]),
+    ...mapActions(useUserStore, ["LOGIN_USER"]),
   },
 };
 </script>
