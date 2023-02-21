@@ -32,7 +32,7 @@
             v-else
             text="Sign in"
             type="primary"
-            @click="loginUser"
+            @click="LOGIN_USER"
           />
         </div>
       </div>
@@ -43,7 +43,7 @@
 
 <script>
 import { mapActions, mapState } from "pinia";
-import { useUserStore } from "@/stores/user";
+import { useUserStore, LOGIN_USER } from "@/stores/user";
 
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import ProfileImage from "@/components/Navigation/ProfileImage.vue";
@@ -96,7 +96,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(useUserStore, ["loginUser"]),
+    ...mapActions(useUserStore, [LOGIN_USER]),
   },
 };
 </script>
