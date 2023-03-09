@@ -3,20 +3,27 @@ import userEvent from "@testing-library/user-event";
 import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
 
 describe("CollapsibleAccordion", () => {
-  it("renders child content", async () => {
+  const renderCollapsibleAccordion = (config = {}) => {
     render(CollapsibleAccordion, {
       global: {
         stubs: {
           FontAwesomeIcon: true,
         },
       },
-      props: {
-        header: "My Category",
-      },
-      slots: {
-        default: "<h3>My nested child</h3>",
-      },
+      ...config,
     });
+  };
+
+  it("renders child content", async () => {
+    const props = {
+      header: "My Category",
+    };
+
+    const slots = {
+      default: "<h3>My nested child</h3>",
+    };
+
+    renderCollapsibleAccordion({ props, slots });
 
     expect(screen.queryByText("My nested child")).not.toBeInTheDocument();
 
@@ -29,16 +36,11 @@ describe("CollapsibleAccordion", () => {
 
   describe("When parent does not provide custom child content", () => {
     it("renders default content", async () => {
-      render(CollapsibleAccordion, {
-        global: {
-          stubs: {
-            FontAwesomeIcon: true,
-          },
-        },
-        props: {
-          header: "My Category",
-        },
-      });
+      const props = {
+        header: "My Category",
+      };
+
+      renderCollapsibleAccordion({ props });
 
       const button = screen.getByRole("button", { name: /my category/i });
 
