@@ -9,7 +9,10 @@
       <font-awesome-icon :icon="caretIcon" />
     </div>
     <div v-if="isOpen" class="mt-5 w-full">
-      <slot />
+      <slot>
+        <!-- fallback content -->
+        <p>Whoops, somebody forgot to populate me</p>
+      </slot>
     </div>
   </div>
 </template>
